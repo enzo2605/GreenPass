@@ -119,7 +119,8 @@ int main(int argc, char *argv[]) {
                             continue;
                         }
                         // Copia della tessera sanitaria e della data di validità nel pacchetto di ritorno
-                        packetToCentroVaccinale = packetFromCentroVaccinale;
+                        strcpy(packetToCentroVaccinale.healthInsureCardNumber, packetFromCentroVaccinale.healthInsureCardNumber);
+                        strcpy(packetToCentroVaccinale.greenPassValidityDate, packetToCentroVaccinale.greenPassValidityDate);
                         // Spostiamoci sulla cartella database, se non ci troviamo già in tale cartella
                         Chdir(dirName);
                         // Verifica la validità del green pass
@@ -163,6 +164,7 @@ int main(int argc, char *argv[]) {
                              * file GreenPassDB.txt e rinominiamo il file TempFile.txt in GreenPassDB.txt.
                              */
                             while (!feof(filePointer)) {
+                                // Lettura della tupla dal file
                                 fscanf(filePointer, "%s %s %d", buffRead.healthInsureCardNumber, buffRead.greenPassValidityDate, &validity);
                                 if (strcmp(buffRead.healthInsureCardNumber, packetFromCentroVaccinale.healthInsureCardNumber) == 0){
                                     // Aggiornamento data
