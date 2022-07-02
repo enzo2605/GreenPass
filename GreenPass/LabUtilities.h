@@ -39,9 +39,9 @@ int Accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
 void IPConversion(int af, const char *src, struct in_addr *dst);
 void Close(int fd);
 void *getCurrentDir(void);
-int Chdir(const char *path);
-int Remove(const char *pathname);
-int Rename(const char *oldpath, const char *newpath);
+void Chdir(const char *path);
+void Remove(const char *pathname);
+void Rename(const char *oldpath, const char *newpath);
 ssize_t FullWrite(int fd, void *buf, size_t count);
 ssize_t FullRead(int fd, void *buf, size_t count);
 

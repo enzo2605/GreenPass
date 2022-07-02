@@ -3,7 +3,7 @@
 void checkHealthInsureCardNumber(char *healthInsureCardNumber) {
     size_t length = strlen(healthInsureCardNumber);
     if (length + 1 != HEALTH_INSURE_CARD_NUMBER_LENGTH) {
-        fprintf(stderr, "La tessera sanitaria deve contenere massimo 20 caratteri.\n");
+        fprintf(stderr, "La tessera sanitaria deve contenere esattamente 20 caratteri.\n");
         exit(HEALTH_INSURE_CARD_NUMBER_ERROR);
     }
 }
@@ -142,22 +142,23 @@ int checkGreenPassValidity(const char *healthInsureCardNumber) {
                 return (validity == 0) ? GREEN_PASS_DISABLED : GREEN_PASS_OK;
             }
             // A parità di anno
-            else {
+            else if ((greenPassValidityBDTFormat->tm_year - todaysDateBDTFormat->tm_year) == 0) {
                 // Controllo sul mese
                 if ((greenPassValidityBDTFormat->tm_mon - todaysDateBDTFormat->tm_mon) > 0) {
                     return (validity == 0) ? GREEN_PASS_DISABLED : GREEN_PASS_OK;
                 }
                 // A parità di mese
-                else {
+                else if ((greenPassValidityBDTFormat->tm_mon - todaysDateBDTFormat->tm_mon) == 0) {
                     // Controllo sul giorno
                     if ((greenPassValidityBDTFormat->tm_mday - todaysDateBDTFormat->tm_mday) > 0) {
                         return (validity == 0) ? GREEN_PASS_DISABLED : GREEN_PASS_OK;
                     }
-                    else {
-                        break;
-                    }
                 }
             }
+        }
+        // Se il numero della tessera sanitaria è stato trovato, non ha senso continuare a scorrere il file
+        if (healthCardNumberFound) {
+            break;
         }
     }
     fclose(filePointer);

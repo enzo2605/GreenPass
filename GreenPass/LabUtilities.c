@@ -88,7 +88,7 @@ void *getCurrentDir(void) {
     return directory;
 }
 
-int Chdir(const char *path) {
+void Chdir(const char *path) {
     if (strcmp((const char *)getCurrentDir(), path) != 0) {
         if (chdir(path) == -1) {
             perror("chdir error");
@@ -97,14 +97,14 @@ int Chdir(const char *path) {
     }
 }
 
-int Remove(const char *pathname) {
+void Remove(const char *pathname) {
     if (remove(pathname) == -1) {
         perror("remove error");
         exit(1);
     }
 }
 
-int Rename(const char *oldpath, const char *newpath) {
+void Rename(const char *oldpath, const char *newpath) {
     if (rename(oldpath, newpath) == -1) {
         perror("rename error");
         exit(1);
