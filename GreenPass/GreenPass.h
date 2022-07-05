@@ -1,6 +1,6 @@
 /**
  * GreenPass.h
- * Created by Vincenzo Iannucci
+ * Created by Vincenzo Iannucci and Michele Fiorentino
  * 
  * La libreria GreenPass.h definisce la struttura dei pacchetti, i valori di ritorno associati ad 
  * ogni pacchetto e una serie di costanti e funzioni che sono di comune utilità per i file che 

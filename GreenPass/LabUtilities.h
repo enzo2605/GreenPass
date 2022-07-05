@@ -1,6 +1,6 @@
 /**
  * LabUtilities.h
- * Created by Vincenzo Iannucci
+ * Created by Vincenzo Iannucci and Michele Fiorentino
  * 
  * Questa libreria contiene le funzioni wrapper per le system call utilizzate nel progetto. Ciò permette
  * agli altri file del progetto di richiamare le suddette system call senza preoccuparsi della gestione di 
